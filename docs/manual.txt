@@ -1,0 +1,20 @@
+/* 
+ * Vision Magic 1.0
+ * manual
+ * $Id$
+*/
+/**
+@page manual GUI / Operational Manual
+
+<p>
+This page describes the ACD GUI and illustrates how to operate the rig.
+</p>
+\section camera Camera Tab
+<p> Camera tab allow you to see the live stream from the camera (if a camera is connected)
+. This is useful to adjust the print head position if needed and see how the autofocus is
+performing.  
+<ul>
+<li> Simply click on this tab to view the camera stream
+</ul>
+</p>
+*/
