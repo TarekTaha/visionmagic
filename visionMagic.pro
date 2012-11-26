@@ -37,7 +37,4 @@ system("echo $$[QT_INSTALL_PREFIX]> qtLocation")
    }
 }
 
-SUBDIRS = src/modules/shared \
-          src/modules/tiffIOLib \
-          src/modules/qwt \
-          src
+SUBDIRS = src
