@@ -9,6 +9,7 @@ win32:ROOT_DIR = $$system( cd )
 else:ROOT_DIR  = $$system( pwd )
 QWT_ROOT       = "$${ROOT_DIR}/modules/qwt"
 
+
 message("QWT ROOT IS: $${QWT_ROOT}")
 
 SUFFIX_STR =

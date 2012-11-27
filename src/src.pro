@@ -29,10 +29,6 @@ TARGET = VisionMagic
 #    UI_DIR = ./release/ui
 #}
 #RESOURCES = ../resources/rcs.qrc
-CONFIG(debug, debug|release):LIBS += -Lmodules/shared/debug -larthurstyle_shared_d
-
-CONFIG(release, debug|release):LIBS += -Lmodules/shared/release -larthurstyle_shared
-
 !include( opencv.pri ):error( Unable to find opencv.pri )
 !include( qwt.pri ):error( Unable to find qwt.pri )
 !include( boost.pri ):error( Unable to find boost.pri )
@@ -48,33 +44,22 @@ QT += core \
 INCLUDEPATH += ./gui \
     ./modules/autoFocus \
     ./modules/cameraGrabber \
-    ./modules/dnmap \
     ./modules/exceptions \
-    ./modules/imageAcquisition \
     ./modules/imageAnalysis \
-    ./modules/imageAnalysis/cvBlobsLib \
     ./modules/logger/ \
     ./modules/sceneRendering/ \
-    ./modules/shared
-SOURCES += modules/imageAcquisition/imageacquisition.cpp \
-    main.cpp \
+    ./modules/shared/ \
+    ./modules/imageAcquisition
+SOURCES += main.cpp \
     gui/mainwindow.cpp \
     gui/settingsdialog.cpp \
     gui/splashscreen.cpp \
     modules/sceneRendering/QOpenCVWidget.cpp \
     modules/sceneRendering/scenevisualization.cpp \
-    modules/imageAcquisition/imageprovider.cpp \
-    modules/imageAnalysis/imageanalysis.cpp \
     modules/imageAnalysis/imageanalysisalgorithms.cpp \
     gui/templatemodel.cpp \
     modules/logger/messagelogger.cpp \
     gui/acdsettings.cpp \
-    gui/dnmapgeneratordialog.cpp \
-    modules/imageAnalysis/linefit.cpp \
-    modules/imageAnalysis/line.cpp \
-    modules/imageAnalysis/encapdelaminspection.cpp \
-    modules/sceneRendering/nozzlehealthviewer.cpp \
-    modules/sceneRendering/chipgraphicitem.cpp \
     modules/cameraGrabber/cameragrabber.cpp \
     modules/cameraGrabber/avtcamera.cpp \
     modules/cameraGrabber/camera.cpp \
@@ -83,28 +68,19 @@ SOURCES += modules/imageAcquisition/imageacquisition.cpp \
     modules/imageAcquisition/imageviewer.cpp \
     gui/treeitem.cpp \
     gui/treemodel.cpp
-HEADERS += modules/imageAcquisition/imageacquisition.h \
-    gui/mainwindow.h \
+HEADERS += gui/mainwindow.h \
     gui/settingsdialog.h \
     gui/splashscreen.h \
     modules/sceneRendering/QOpenCVWidget.h \
     modules/sceneRendering/scenevisualization.h \
-    modules/imageAcquisition/imageprovider.h \
-    modules/imageAnalysis/imageanalysis.h \
     modules/imageAnalysis/imageanalysisalgorithms.h \
     modules/imageAnalysis/mathfun.h \
-    modules/imageAnalysis/encapdelaminspection.h \
     gui/templatemodel.h \
     modules/logger/messagelogger.h \
     gui/version.h \
     gui/acdsettings.h \
     gui/settings.h \
-    gui/dnmapgeneratordialog.h \
-    modules/imageAnalysis/linefit.h \
-    modules/imageAnalysis/line.h \
     modules/exceptions/acdexceptions.h \
-    modules/sceneRendering/nozzlehealthviewer.h \
-    modules/sceneRendering/chipgraphicitem.h \
     modules/exceptions/EncapsulationExceptions.h \
     modules/cameraGrabber/cameragrabber.h \
     modules/exceptions/myexception.h \
@@ -125,24 +101,19 @@ FORMS += gui/mainwindow.ui \
     gui/settingsdialog_acquisition.ui \
     gui/settingsdialog_analysis.ui \
     gui/settingsdialog.ui \
-    modules/logger/messagelogger.ui \
-    gui/dnmapgeneratordialog.ui
+    modules/logger/messagelogger.ui
 win32 {
     DEFINES += _TTY_WIN_
-    HEADERS += modules/motorControl/serialLib/win_qextserialport.h
-    SOURCES += modules/motorControl/serialLib/win_qextserialport.cpp
     #RC_FILE = ../resources/appIcon.rc
-    INCLUDEPATH+= "C:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/include" \
+    INCLUDEPATH+= "C:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/include"
+    HEADERS    += "C:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/include/UniControl.h"
     LIBS +=  \
         "C:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/Lib/UniControl.lib" \
         "C:/Program Files/Allied Vision Technologies/UniversalPackage/UniAPI/Lib/UniTransform.lib" \
         -lsetupapi -lAdvapi32 \
-        -lshell32 \
-#        "C:/Program Files/EZTwain/Release/Eztwain3.lib"
+        -lshell32
 }
 unix {
-    #HEADERS += modules/motorControl/serialLib/posix_qextserialport.h
-    #SOURCES += modules/motorControl/serialLib/posix_qextserialport.cpp
     DEFINES += _TTY_POSIX_
 }
 

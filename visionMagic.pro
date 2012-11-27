@@ -37,4 +37,5 @@ system("echo $$[QT_INSTALL_PREFIX]> qtLocation")
    }
 }
 
-SUBDIRS = src
+SUBDIRS = src/modules/qwt \
+          src

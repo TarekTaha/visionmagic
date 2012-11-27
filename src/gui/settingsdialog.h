@@ -10,8 +10,6 @@
 
 #include <QHeaderView>
 #include <QProcess>
-#include <qextserialport.h>
-#include <qextserialenumerator.h>
 #include "ui_settingsdialog.h"
 #include "ui_settingsdialog_camera.h"
 #include "ui_settingsdialog_focus.h"
@@ -57,7 +55,6 @@ class SettingsDialog : public QDialog
         void populateAcquisition();
         void populateAnalysis();
         void populateSPA();
-        void getAvaliablePorts();
 
         void saveCamera();
         void saveFocus();

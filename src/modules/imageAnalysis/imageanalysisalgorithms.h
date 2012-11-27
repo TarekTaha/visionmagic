@@ -29,9 +29,6 @@
 #include <QPoint>
 #include <QMutexLocker>
 #include <QTimer>
-#include "nozzle.h"
-#include "line.h"
-#include "linefit.h"
 
 #include "cv.h"
 #include "highgui.h"

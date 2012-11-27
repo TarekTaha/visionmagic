@@ -35,7 +35,6 @@
 #include <QGraphicsItem>
 #include "highgui.h"
 #include "dlogger.h"
-#include "arthurwidgets.h"
 
 using namespace cv;
 

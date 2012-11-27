@@ -57,7 +57,7 @@ SettingsDialog::SettingsDialog( QWidget *parent )
     ui.pageStack->addWidget( spaWidget );
 
     adjustSize();
-    getAvaliablePorts();
+
     //Main
     connect( ui.pageList, SIGNAL(currentRowChanged( int )), SLOT(pageSwitched( int )) );
     connect( ui.okButton, SIGNAL(clicked()), SLOT(onOkClicked()) );
@@ -180,19 +180,6 @@ int SettingsDialog::exec( int startPage )
     ui.applyButton->setEnabled( false );
 
     return QDialog::exec();
-}
-
-void SettingsDialog::getAvaliablePorts()
-{
-    QList<QextPortInfo> ports = QextSerialEnumerator::getPorts();
-    for (int i = 0; i < ports.size(); i++)
-    {
-        ui_motors.comPort->addItem(ports.at(i).portName.toLocal8Bit().constData());
-        ui_ledlighting.comPort->addItem(ports.at(i).portName.toLocal8Bit().constData());
-        portsFriendlyName.push_back(ports.at(i).friendName.toLocal8Bit().constData());
-        ui_ledlighting.portName->setText(portsFriendlyName[i]);
-        ui_motors.portName->setText(portsFriendlyName[i]);
-    }
 }
 
 void SettingsDialog::onOkClicked()

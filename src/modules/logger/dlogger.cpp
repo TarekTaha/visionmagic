@@ -137,7 +137,7 @@ void Logger::initialize(QString sFilename,bool bOverwrite)
 
     // Print some initial startup info
     LOG(1, "************************************* STARTUP ********************************************\n")
-    LOG(1, QString("%1 v%2").arg(APPLICATION_NAME).arg(PIT_VERSION_LONG) << "\n")
+    LOG(1, QString("%1 v%2").arg(APPLICATION_NAME).arg(APP_VERSION_LONG) << "\n")
     LOG(1, "******************************************************************************************\n")
     // Install message handler for dealing with qDebug output
     mDefaultMsgHandler = qInstallMsgHandler(loggingMsgHandler);
